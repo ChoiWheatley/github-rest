@@ -26,6 +26,18 @@ export class AppController {
         },
       },
     );
-    return res.data;
+    return res.data.map((val: any) => {
+      return {
+        html_url: val.html_url,
+        state: val.state,
+        title: val.title,
+        user: {
+          login: val.user.login,
+          avatar_url: val.user.avatar_url,
+        },
+        created_at: val.created_at,
+        updated_at: val.updated_at,
+      };
+    });
   }
 }
